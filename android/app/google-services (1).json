@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "510120854845",
+    "project_id": "mopileapp-c9052",
+    "storage_bucket": "mopileapp-c9052.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510120854845:android:1242afd2bfd8a5986e3154",
+        "android_client_info": {
+          "package_name": "com.example.todoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5MkRfaj3B5zYssxxt0oHQDyFldP01XsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
