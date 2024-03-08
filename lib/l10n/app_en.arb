@@ -1,16 +1,5 @@
 {
-  "appTitle": "Islami",
-  "sura_names": "Sura Names",
-  "ahadeth": "Ahadeth",
-  "ayat_count": "Number of Ayat",
-  "tasbeeh_count": "Tasbeeh Count",
-  "quran": "Quran",
-  "sebha": "Sebha",
-  "radio": "Radion",
   "settings": "Settings",
-  "language": "Language"
-
-
-
- 
+  "language": "Language",
+  "toDoList": "to Do List"
 }

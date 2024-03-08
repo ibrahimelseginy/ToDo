@@ -1,15 +1,5 @@
 {
-  "appTitle": "اسلامي",
-  "sura_names": "اسم السوره",
-  "ahadeth": "أحاديث",
-  "ayat_count": "عدد الايات",
-  "tasbeeh_count": "عدد التسبيحات",
-  "quran": "القران",
-  "sebha": "السبحه",
-  "radio": "الراديو",
   "settings": "الاعدادات",
-  "language": "اللغه"
-
-
- 
+  "language": "اللغه",
+  "toDoList": "قائمة الأعمال "
 }
