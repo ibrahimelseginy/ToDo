@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/firebase_utils.dart';
+import 'package:todoapp/model/task_model.dart';
 import 'package:todoapp/tabs/tasks/default_elevated_button.dart';
 import 'package:todoapp/tabs/tasks/default_text_form_field.dart';
+import 'package:todoapp/tabs/tasks/tasks_provider.dart';
 
 class AddTaskButtomSheet extends StatefulWidget {
   const AddTaskButtomSheet({super.key});
@@ -61,14 +65,15 @@ class _AddTaskButtomSheetState extends State<AddTaskButtomSheet> {
                     context: context,
                     firstDate: DateTime.now(),
                     lastDate: DateTime.now().add(const Duration(days: 356)),
-                    initialDate: DateTime.now(),
+                    initialDate: selectedDate,
                     initialEntryMode: DatePickerEntryMode.calendarOnly);
                 //new var (date)
                 if (date != null) selectedDate = date;
+                setState(() {});
               },
               child: Text(
                 // DateTime.now().toString().substring(0, 10)
-                dateformate.format(DateTime.now()),
+                dateformate.format(selectedDate),
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
@@ -82,5 +87,24 @@ class _AddTaskButtomSheetState extends State<AddTaskButtomSheet> {
     );
   }
 
-  void addtask() {}
+  void addtask() {
+    FirebaseUtils.addTaskToFireStore(TaskModel(
+            title: titleController.text,
+            description: descriptionController.text,
+            dateTime: selectedDate))
+        //success in Remote
+        /*
+        .then((_) {
+      print('success');})
+      */
+        //success in Local
+        .timeout(const Duration(milliseconds: 100), onTimeout: () {
+      Provider.of<TasksProvider>(context, listen: false).getTasks();
+      Navigator.of(context).pop();
+      print('Succes');
+    }).catchError((_) {
+      Navigator.of(context).pop();
+      print('Error,try again!');
+    });
+  }
 }
