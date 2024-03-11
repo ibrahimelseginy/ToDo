@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp/apptheme.dart';
@@ -101,10 +102,16 @@ class _AddTaskButtomSheetState extends State<AddTaskButtomSheet> {
         .timeout(const Duration(milliseconds: 100), onTimeout: () {
       Provider.of<TasksProvider>(context, listen: false).getTasks();
       Navigator.of(context).pop();
-      print('Succes');
+      Fluttertoast.showToast(
+        msg: "Task added Successfully",
+        toastLength: Toast.LENGTH_SHORT,
+      );
     }).catchError((_) {
       Navigator.of(context).pop();
-      print('Error,try again!');
+      Fluttertoast.showToast(
+        msg: "Somthing Went Wrong!",
+        toastLength: Toast.LENGTH_SHORT,
+      );
     });
   }
 }

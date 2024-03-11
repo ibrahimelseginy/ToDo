@@ -6,9 +6,9 @@ class FirebaseUtils {
       FirebaseFirestore.instance.collection('tasks').withConverter<TaskModel>(
           fromFirestore: (snapshot, _) => TaskModel.fromJson(snapshot.data()!),
           toFirestore: (taskModel, _) => taskModel.toJosn());
+  // operation  dataBase (crud operation)
 
-  // operation  dataBase (crad operation)
-  // create_dataBase
+  // 1- create_dataBase
   static Future<void> addTaskToFireStore(TaskModel task) {
     final tasksCollection = getTasksCollection();
     final doc = tasksCollection.doc();
@@ -16,14 +16,20 @@ class FirebaseUtils {
     return doc.set(task);
   }
 
-  // read_dataBase
+  //2- read_dataBase
   static Future<List<TaskModel>> getAllTasksFromFireStore() async {
     final tasksCollection = getTasksCollection();
     final querySnapshot = await tasksCollection.get();
-
     return querySnapshot.docs.map((doc) => doc.data()).toList();
   }
 
-  //delete_dataBase
-  static void deleteTaskToFireStore(String taskId) {}
+  //3- delete_dataBase
+  /*static Future<void> deleteTaskToFireStore(String taskId) async {
+    final tasksCollection = getTasksCollection();
+    await tasksCollection.doc(taskId).delete();
+  }*/
+  static Future<void> deleteTaskToFireStore(String taskId) {
+    final tasksCollection = getTasksCollection();
+    return tasksCollection.doc(taskId).delete();
+  }
 }
