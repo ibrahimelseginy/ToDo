@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/tabs/settings/settings_tab.dart';
 import 'package:todoapp/tabs/tasks/add_task_bottom_sheet.dart';
 import 'package:todoapp/tabs/tasks/task_tab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String routeName = '/';
+  static const String routeName = '/home';
   const HomeScreen({super.key});
 
   @override
@@ -13,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Widget> tabs = [const TaskTab(), const SettingsTab()];
+  List<Widget> tabs = [const TaskTab()];
 
   int currentIndex = 0;
   @override
