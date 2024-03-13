@@ -11,31 +11,70 @@ class AppTheme {
   static Color whiteColor = const Color(0xffffffff);
 
   static ThemeData lightTheme = ThemeData(
-      primaryColor: primaryColor,
-      appBarTheme: AppBarTheme(
-          backgroundColor: primaryColor,
-          titleTextStyle: TextStyle(
-              color: whiteColor, fontWeight: FontWeight.bold, fontSize: 22)),
-      scaffoldBackgroundColor: backgroundColorLight,
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedItemColor: primaryColor,
-        unselectedItemColor: greenColor,
-      ),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
+    primaryColor: primaryColor,
+    appBarTheme: AppBarTheme(
         backgroundColor: primaryColor,
-        foregroundColor: whiteColor,
-        shape: CircleBorder(side: BorderSide(color: whiteColor, width: 4)),
+        titleTextStyle: TextStyle(
+            color: whiteColor, fontWeight: FontWeight.bold, fontSize: 22)),
+    scaffoldBackgroundColor: backgroundColorLight,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
+      selectedItemColor: primaryColor,
+      unselectedItemColor: greenColor,
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+          textStyle: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w300,
+          ),
+          foregroundColor: AppTheme.balckColor),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: greyColor.withOpacity(.9),
+          width: 1,
+        ),
       ),
-      textTheme: TextTheme(
-        bodyLarge: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.w400, color: balckColor),
-        bodyMedium: TextStyle(
-            fontSize: 18, fontWeight: FontWeight.bold, color: primaryColor),
-        bodySmall: TextStyle(
-            fontSize: 16, fontWeight: FontWeight.w600, color: balckColor),
-      ));
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: primaryColor,
+          width: 2,
+        ),
+      ),
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: primaryColor,
+      foregroundColor: whiteColor,
+      shape: CircleBorder(
+        side: BorderSide(color: whiteColor, width: 4),
+      ),
+    ),
+    textTheme: TextTheme(
+      titleMedium: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: balckColor,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        color: balckColor,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: primaryColor,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: balckColor,
+      ),
+    ),
+  );
 
   static ThemeData darkTheme = ThemeData(
       appBarTheme: AppBarTheme(
