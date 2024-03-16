@@ -5,8 +5,8 @@ import 'package:todoapp/model/task_model.dart';
 class TasksProvider with ChangeNotifier {
   List<TaskModel> tasks = [];
   DateTime selectedDate = DateTime.now();
-  Future<void> getTasks() async {
-    final allTasks = await FirebaseUtils.getAllTasksFromFireStore();
+  Future<void> getTasks(String userId) async {
+    final allTasks = await FirebaseUtils.getAllTasksFromFireStore(userId);
     tasks = allTasks
         .where((task) =>
             // filter list
@@ -18,9 +18,14 @@ class TasksProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void changeSelectedDate(DateTime dateTime) {
+  void changeSelectedDate(DateTime dateTime, String userId) {
     selectedDate = dateTime;
     notifyListeners();
-    getTasks();
+    getTasks(userId);
+  }
+
+  void clear() {
+    tasks = [];
+    selectedDate = DateTime.now();
   }
 }

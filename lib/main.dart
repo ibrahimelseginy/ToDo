@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +6,7 @@ import 'package:todoapp/apptheme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:todoapp/auth/login_screen.dart';
 import 'package:todoapp/auth/register_screen.dart';
+import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/home_screen.dart';
 import 'package:todoapp/tabs/settings/settings_provider.dart';
 import 'package:todoapp/tabs/tasks/tasks_provider.dart';
@@ -13,15 +14,16 @@ import 'package:todoapp/tabs/tasks/tasks_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  /*
+  // local data base
   await FirebaseFirestore.instance.disableNetwork();
   FirebaseFirestore.instance.settings =
-      const Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);
+      const Settings(cacheSizeBytes: Settings.CACHE_SIZE_UNLIMITED);*/
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => SettingsProvider()),
-      ChangeNotifierProvider(
-        create: (_) => TasksProvider()..getTasks(),
-      ),
+      ChangeNotifierProvider(create: (_) => TasksProvider()),
+      ChangeNotifierProvider(create: (_) => UserProvider()),
     ], child: const TodoApp()),
   );
 }

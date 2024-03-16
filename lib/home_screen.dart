@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/auth/login_screen.dart';
+import 'package:todoapp/auth/user_provider.dart';
+import 'package:todoapp/firebase_utils.dart';
 import 'package:todoapp/tabs/tasks/add_task_bottom_sheet.dart';
 import 'package:todoapp/tabs/tasks/task_tab.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:todoapp/tabs/tasks/tasks_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -13,8 +19,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<Widget> tabs = [const TaskTab()];
-
   int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     List<String> appBarTitles = [
@@ -27,6 +33,22 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsetsDirectional.only(start: 20),
           child: Text(appBarTitles[currentIndex]),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                FirebaseUtils.logout();
+                Navigator.of(context)
+                    .pushReplacementNamed(LoginScreen.routeName);
+                Provider.of<TasksProvider>(context, listen: false).clear();
+                Provider.of<UserProvider>(context, listen: false).currentUser =
+                    null;
+              },
+              icon: Icon(
+                Icons.logout_outlined,
+                color: AppTheme.whiteColor,
+                size: 30,
+              ))
+        ],
       ),
       body: tabs[currentIndex],
       bottomNavigationBar: BottomAppBar(
