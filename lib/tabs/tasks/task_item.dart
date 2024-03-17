@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/firebase_utils.dart';
 import 'package:todoapp/model/task_model.dart';
 import 'package:todoapp/tabs/tasks/tasks_provider.dart';
@@ -27,11 +28,13 @@ class TaskItem extends StatelessWidget {
             // A SlidableAction can have an icon and/or a label.
             SlidableAction(
               onPressed: (_) {
-                FirebaseUtils.deleteTaskToFireStore(task.id)
-                    .timeout(const Duration(milliseconds: 100),
-                        onTimeout: () =>
-                            Provider.of<TasksProvider>(context, listen: false)
-                                .getTasks())
+                final userId = Provider.of<UserProvider>(context, listen: false)
+                    .currentUser!
+                    .id;
+                FirebaseUtils.deleteTaskToFireStore(userId, task.id)
+                    .then((_) =>
+                        Provider.of<TasksProvider>(context, listen: false)
+                            .getTasks(userId))
                     .catchError(
                       (_) => Fluttertoast.showToast(
                         msg: "Somthing Went Wrong!",

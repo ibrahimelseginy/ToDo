@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/firebase_utils.dart';
 import 'package:todoapp/model/task_model.dart';
 import 'package:todoapp/tabs/tasks/default_elevated_button.dart';
@@ -111,19 +112,25 @@ class _AddTaskButtomSheetState extends State<AddTaskButtomSheet> {
   }
 
   void addtask() {
+    final userId =
+        Provider.of<UserProvider>(context, listen: false).currentUser!.id;
     if (formkey.currentState?.validate() == true) {
-      FirebaseUtils.addTaskToFireStore(TaskModel(
-              title: titleController.text,
-              description: descriptionController.text,
-              dateTime: selectedDate))
+      FirebaseUtils.addTaskToFireStore(
+              TaskModel(
+                  title: titleController.text,
+                  description: descriptionController.text,
+                  dateTime: selectedDate),
+              userId)
           //success in Remote
-          /*
-        .then((_) {
-      print('success');})
-      */
-          //success in Local
-          .timeout(const Duration(milliseconds: 100), onTimeout: () {
-        Provider.of<TasksProvider>(context, listen: false).getTasks();
+          .then((_) {
+        Provider.of<TasksProvider>(context, listen: false).getTasks(
+          userId,
+        );
+        //success in Local
+        //   .timeout(const Duration(milliseconds: 100), onTimeout: () {
+        // Provider.of<TasksProvider>(context, listen: false).getTasks(
+        //   userId,
+        // );
         Navigator.of(context).pop();
         Fluttertoast.showToast(
           msg: "Task added Successfully",

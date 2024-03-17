@@ -1,14 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_timeline_calendar/timeline/flutter_timeline_calendar.dart';
 import 'package:provider/provider.dart';
+import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/tabs/tasks/task_item.dart';
 import 'package:todoapp/tabs/tasks/tasks_provider.dart';
 
-class TaskTab extends StatelessWidget {
+class TaskTab extends StatefulWidget {
   const TaskTab({super.key});
+
+  @override
+  State<TaskTab> createState() => _TaskTabState();
+}
+
+class _TaskTabState extends State<TaskTab> {
+  late String userId;
+  late TasksProvider tasksProvider;
+  bool shouldGetTasks = true; //flag
+  @override
+  // void initState() {
+  //   super.initState();
+  //   // بس scope initState دول هيتشافو جوه
+  // userId = Provider.of<UserProvider>(context).currentUser!.id;
+  // tasksProvider = Provider.of<TasksProvider>(context)..getTasks(userId);
+  // }
+
   @override
   Widget build(BuildContext context) {
-    final tasksProvider = Provider.of<TasksProvider>(context);
+    if (shouldGetTasks) {
+      //هيتفزو مره واحده بس
+      userId = Provider.of<UserProvider>(context).currentUser!.id;
+      tasksProvider = Provider.of<TasksProvider>(context)..getTasks(userId);
+      shouldGetTasks = false;
+    }
     return Column(children: [
       TimelineCalendar(
         calendarType: CalendarType.GREGORIAN,
@@ -35,7 +58,8 @@ class TaskTab extends StatelessWidget {
             month: tasksProvider.selectedDate.month,
             day: tasksProvider.selectedDate.day),
         onChangeDateTime: (calendarDatetime) {
-          tasksProvider.changeSelectedDate(calendarDatetime.toDateTime());
+          tasksProvider.changeSelectedDate(
+              calendarDatetime.toDateTime(), userId);
         },
       ),
       const SizedBox(
