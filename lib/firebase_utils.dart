@@ -55,6 +55,18 @@ class FirebaseUtils {
     return tasksCollection.doc(taskId).delete();
   }
 
+  // 3- Update_dataBase
+  static Future<void> editTask(
+    TaskModel task,
+    userId,
+  ) {
+    final tasksCollection = getTasksCollection(userId);
+    final doc = tasksCollection.doc(task.id);
+    return doc.update(
+      task.toJosn(),
+    );
+  }
+
   static Future<UserModel> register({
     required String email,
     required String name,

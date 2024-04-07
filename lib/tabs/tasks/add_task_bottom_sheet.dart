@@ -122,21 +122,23 @@ class _AddTaskButtomSheetState extends State<AddTaskButtomSheet> {
                   dateTime: selectedDate),
               userId)
           //success in Remote
-          .then((_) {
-        Provider.of<TasksProvider>(context, listen: false).getTasks(
-          userId,
-        );
-        //success in Local
-        //   .timeout(const Duration(milliseconds: 100), onTimeout: () {
-        // Provider.of<TasksProvider>(context, listen: false).getTasks(
-        //   userId,
-        // );
-        Navigator.of(context).pop();
-        Fluttertoast.showToast(
-          msg: "Task added Successfully",
-          toastLength: Toast.LENGTH_SHORT,
-        );
-      }).catchError(
+          .then(
+        (_) {
+          Provider.of<TasksProvider>(context, listen: false).getTasks(
+            userId,
+          );
+          //success in Local
+          //   .timeout(const Duration(milliseconds: 100), onTimeout: () {
+          // Provider.of<TasksProvider>(context, listen: false).getTasks(
+          //   userId,
+          // );
+          Navigator.of(context).pop();
+          Fluttertoast.showToast(
+            msg: "Task added Successfully",
+            toastLength: Toast.LENGTH_SHORT,
+          );
+        },
+      ).catchError(
         (_) {
           Navigator.of(context).pop();
           Fluttertoast.showToast(

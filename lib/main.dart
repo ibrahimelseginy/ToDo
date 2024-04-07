@@ -9,6 +9,7 @@ import 'package:todoapp/auth/register_screen.dart';
 import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/home_screen.dart';
 import 'package:todoapp/tabs/settings/settings_provider.dart';
+import 'package:todoapp/tabs/tasks/edit_task_screen.dart';
 import 'package:todoapp/tabs/tasks/tasks_provider.dart';
 
 void main() async {
@@ -46,6 +47,7 @@ class TodoApp extends StatelessWidget {
         HomeScreen.routeName: (_) => const HomeScreen(),
         LoginScreen.routeName: (_) => const LoginScreen(),
         RegisterScreen.routeName: (_) => const RegisterScreen(),
+        EditTaskScreen.routeName: (_) => EditTaskScreen(),
       },
       initialRoute: LoginScreen.routeName,
     );

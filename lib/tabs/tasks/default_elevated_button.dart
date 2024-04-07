@@ -14,13 +14,15 @@ class DefaultElevatedButton extends StatelessWidget {
     return ElevatedButton(
         onPressed: onpressed,
         style: ElevatedButton.styleFrom(
-            backgroundColor: AppTheme.primaryColor,
-            fixedSize: Size(
-              MediaQuery.of(context).size.width,
-              50,
-            ),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))),
+          backgroundColor: AppTheme.primaryColor,
+          fixedSize: Size(
+            MediaQuery.of(context).size.width,
+            50,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(6),
+          ),
+        ),
         child: child);
   }
 }

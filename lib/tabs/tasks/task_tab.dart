@@ -32,45 +32,47 @@ class _TaskTabState extends State<TaskTab> {
       tasksProvider = Provider.of<TasksProvider>(context)..getTasks(userId);
       shouldGetTasks = false;
     }
-    return Column(children: [
-      TimelineCalendar(
-        calendarType: CalendarType.GREGORIAN,
-        calendarLanguage: "en",
-        calendarOptions: CalendarOptions(
-          viewType: ViewType.DAILY,
-          toggleViewType: true,
-          headerMonthElevation: 10,
-          headerMonthShadowColor: Colors.black26,
-          headerMonthBackColor: Colors.transparent,
+    return Column(
+      children: [
+        TimelineCalendar(
+          calendarType: CalendarType.GREGORIAN,
+          calendarLanguage: "en",
+          calendarOptions: CalendarOptions(
+            viewType: ViewType.DAILY,
+            toggleViewType: true,
+            headerMonthElevation: 10,
+            headerMonthShadowColor: Colors.black26,
+            headerMonthBackColor: Colors.transparent,
+          ),
+          dayOptions: DayOptions(
+              compactMode: true,
+              weekDaySelectedColor: Theme.of(context).primaryColor,
+              selectedBackgroundColor: Theme.of(context).primaryColor,
+              disableDaysBeforeNow: true),
+          headerOptions: HeaderOptions(
+              weekDayStringType: WeekDayStringTypes.SHORT,
+              monthStringType: MonthStringTypes.FULL,
+              backgroundColor: Theme.of(context).primaryColor,
+              headerTextColor: Colors.black),
+          dateTime: CalendarDateTime(
+              year: tasksProvider.selectedDate.year,
+              month: tasksProvider.selectedDate.month,
+              day: tasksProvider.selectedDate.day),
+          onChangeDateTime: (calendarDatetime) {
+            tasksProvider.changeSelectedDate(
+                calendarDatetime.toDateTime(), userId);
+          },
         ),
-        dayOptions: DayOptions(
-            compactMode: true,
-            weekDaySelectedColor: Theme.of(context).primaryColor,
-            selectedBackgroundColor: Theme.of(context).primaryColor,
-            disableDaysBeforeNow: true),
-        headerOptions: HeaderOptions(
-            weekDayStringType: WeekDayStringTypes.SHORT,
-            monthStringType: MonthStringTypes.FULL,
-            backgroundColor: Theme.of(context).primaryColor,
-            headerTextColor: Colors.black),
-        dateTime: CalendarDateTime(
-            year: tasksProvider.selectedDate.year,
-            month: tasksProvider.selectedDate.month,
-            day: tasksProvider.selectedDate.day),
-        onChangeDateTime: (calendarDatetime) {
-          tasksProvider.changeSelectedDate(
-              calendarDatetime.toDateTime(), userId);
-        },
-      ),
-      const SizedBox(
-        height: 8,
-      ),
-      Expanded(
-        child: ListView.builder(
-          itemBuilder: (_, index) => TaskItem(tasksProvider.tasks[index]),
-          itemCount: tasksProvider.tasks.length,
+        const SizedBox(
+          height: 8,
         ),
-      )
-    ]);
+        Expanded(
+          child: ListView.builder(
+            itemBuilder: (_, index) => TaskItem(tasksProvider.tasks[index]),
+            itemCount: tasksProvider.tasks.length,
+          ),
+        ),
+      ],
+    );
   }
 }

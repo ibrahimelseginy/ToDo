@@ -63,6 +63,11 @@ class AppTheme {
         fontWeight: FontWeight.w400,
         color: balckColor,
       ),
+      titleLarge: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        color: greenColor,
+      ),
       bodyMedium: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,

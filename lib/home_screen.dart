@@ -35,19 +35,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-              onPressed: () {
-                FirebaseUtils.logout();
-                Navigator.of(context)
-                    .pushReplacementNamed(LoginScreen.routeName);
-                Provider.of<TasksProvider>(context, listen: false).clear();
-                Provider.of<UserProvider>(context, listen: false).currentUser =
-                    null;
-              },
-              icon: Icon(
-                Icons.logout_outlined,
-                color: AppTheme.whiteColor,
-                size: 30,
-              ))
+            onPressed: () {
+              FirebaseUtils.logout();
+              Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+              Provider.of<TasksProvider>(context, listen: false).clear();
+              Provider.of<UserProvider>(context, listen: false).currentUser =
+                  null;
+            },
+            icon: Icon(
+              Icons.logout_outlined,
+              color: AppTheme.whiteColor,
+              size: 30,
+            ),
+          )
         ],
       ),
       body: tabs[currentIndex],
@@ -59,9 +59,11 @@ class _HomeScreenState extends State<HomeScreen> {
         child: BottomNavigationBar(
           currentIndex: currentIndex,
           //  currentIndex عن طريقbottomNavigationBar ب body هنا ربطنا ال
-          onTap: (index) => setState(() {
-            currentIndex = index;
-          }),
+          onTap: (index) => setState(
+            () {
+              currentIndex = index;
+            },
+          ),
           items: [
             BottomNavigationBarItem(
                 icon: Image.asset('assets/images/icon_settings.png'),
