@@ -7,13 +7,13 @@ Welcome to our ToDo App! This Flutter project allows users to manage their daily
 
 ## Features 🚀
 
-- 🔒 **User authentication with Firebase Auth
-- 🔒 **Secure password management and reset functionality
-- ✍🏻 **Task management: add, edit, delete tasks
-- 🌍 **Localization support for English and Arabic
-- 🌓 **Dark and Light Mode**: Choose between light and dark themes according to your preference.
-- 📦 **State Management**: Utilizes Provider for efficient state management.
-- 🔒 **Data Persistence**: Utilizes shared preferences and local file reading for seamless user experience.
+- 🔒 User authentication with Firebase Auth
+- 🔑 Secure password management and reset functionality
+- ✍🏻 Task management: add, edit, delete tasks
+- 🌍 Localization support for English and Arabic
+- 🌓 Dark and Light Mode**: Choose between light and dark themes according to your preference.
+- 📦 State Management**: Utilizes Provider for efficient state management.
+- 🔒 Data Persistence**: Utilizes shared preferences and local file reading for seamless user experience.
 
 
 ## Technologies:
