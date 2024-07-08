@@ -3,28 +3,27 @@
   </p>
  
 
+Welcome to our ToDo App! This Flutter project allows users to manage their daily tasks efficiently, ensuring nothing slips through the cracks. Users can sign up, log in, reset their passwords, and securely store their tasks using Firebase authentication. The app supports both English and Arabic languages, and users can seamlessly switch between dark and light themes for a personalized experience.
 
-
-
-Welcome to ToDo  App, your companion for spiritual growth and guidance!
 ## Features 🚀
 
-- 📖 **Quranic Verses**: Access to all chapters (Surahs) of the Quran Kareem.
-- 🕌 **Hadith Collection**: Explore a variety of authentic Prophetic traditions (Ahadith).
-- 📿 **Dhikr Counter**: Keep track of your recitations and repetitions with a built-in Tasbih counter.
-- 📻 **Spiritual Radio**: Listen to Quranic recitations via the integrated radio feature.
+- 🔒 **User authentication with Firebase Auth
+- 🔒 **Secure password management and reset functionality
+- ✍🏻 **Task management: add, edit, delete tasks
+- 🌍 **Localization support for English and Arabic
+- 🌓 **Dark and Light Mode**: Choose between light and dark themes according to your preference.
 - 📦 **State Management**: Utilizes Provider for efficient state management.
 - 🔒 **Data Persistence**: Utilizes shared preferences and local file reading for seamless user experience.
-- 🌓 **Dark and Light Mode**: Choose between light and dark themes according to your preference.
-- 🌍 **Localization**: Available in Arabic and English for wider accessibility.
+
 
 ## Technologies:
 - 🔄 **Provider**: Used for efficient state management.
 - 💾 **Shared Preferences**: Used for data persistence.
 - 📂 **Local File Reading**: Used for data persistence.
 - 🌍 **Localization**: Involves leveraging the localization and internationalization technologies provided by Flutter.
+- 🔒 **User authentication**: Firebase Auth.
 
-## Getting Started:
+## Getting Started 🛠️
 
 1. **Clone the Repository:** Begin by cloning this repository to your local machine using the following command:
    
