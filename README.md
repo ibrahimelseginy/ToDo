@@ -75,16 +75,16 @@ I welcome contributions from the community to enhance Muslim App further. Whethe
 ## Dark Mode ✨
 <div style="display: flex; justify-content: space-between; margin-top: 50px;">
  
-<img src=".png " width="150" height="315">
-<img src=".png " width="150" height="315">
-<img src=".png " width="150" height="315">
-<img src=".png " width="150" height="315">
-<img src=".png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/6e132ca4-2dd8-436b-8fe0-c227474ab5ce.png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/380917b2-af3e-4090-acce-2b7350b2bbf6.png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/b0ec8702-0ccc-46ca-b04e-e10055cc8b0a.png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/5e331a27-0ce0-420b-933e-83689d530247.png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/5a698d63-5534-40d0-8c69-20cdf72c5d9f.png " width="150" height="315">
 
 </div>
 
 <div style="display: flex; justify-content: space-between; margin-top: 30px;">
-<img src=".png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/ddc27eea-411a-4eda-9207-8835b17070ec.png " width="150" height="315">
 <img src=".png " width="150" height="315">
 </div>
 
