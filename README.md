@@ -2,7 +2,7 @@
 <img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/41865d27-3ca6-4023-b7a0-d90521a91f13.png"
   </p>
  
-<h1 align="center"> ToDo  📝</h1>
+
 
 
 
