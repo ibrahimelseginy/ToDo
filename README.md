@@ -27,7 +27,7 @@ Welcome to our ToDo App! This Flutter project allows users to manage their daily
 
 1. **Clone the Repository:** Begin by cloning this repository to your local machine using the following command:
    
-     git clone https://github.com/ibrahimelseginy/Islami
+     git clone https://github.com/ibrahimelseginy/ToDo
 
 2.  Ensure you have Flutter installed. If not, refer to the [Flutter documentation](https://flutter.dev/docs/get-started/install).
 
