@@ -56,9 +56,9 @@ I welcome contributions from the community to enhance Muslim App further. Whethe
 ## Light Mode ✨
 <div style="display: flex; justify-content: space-between;">
 
-<img src=".png " width="150" height="315">
-<img src=".png " width="150" height="315">
-<img src=".png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/dba54af9-2ddb-4b9f-8f3a-75af1cfd6784.png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/a77c07f5-7f8b-4a41-9376-57ab47df0c53.png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/efa1d72d-6e67-4618-9507-af123538f70b.png " width="150" height="315">
 <img src=".png " width="150" height="315">
 
 </div>
