@@ -16,7 +16,8 @@ Welcome to our ToDo App! This Flutter project allows users to manage their daily
 - 🔒 Data Persistence: Utilizes shared preferences and local file reading for seamless user experience.
 
 
-## Technologies:
+## Technologies ⚡
+
 - 🔄 **Provider**: Used for efficient state management.
 - 💾 **Shared Preferences**: Used for data persistence.
 - 📂 **Local File Reading**: Used for data persistence.
@@ -41,7 +42,7 @@ Welcome to our ToDo App! This Flutter project allows users to manage their daily
 
 4. **Explore and Enjoy:** Once the app is running, explore its features!  
 
-## Contributing:
+## Contributing 🤝
 I welcome contributions from the community to enhance Muslim App further. Whether it's adding new features, fixing bugs, or improving documentation, your contributions are valuable in making this app more beneficial for users worldwide.
 
 1. Fork this repository.
