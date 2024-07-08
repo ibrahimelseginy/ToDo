@@ -84,7 +84,7 @@ I welcome contributions from the community to enhance Muslim App further. Whethe
 </div>
 
 <div style="display: flex; justify-content: space-between; margin-top: 30px;">
-<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/8f73bbb0-7d41-48af-82f8-57667acf0ab4.png " width="150" height="315">
+<img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/742189e5-265e-457b-91d1-3515602c4fdd.png " width="150" height="315">
 <img src="https://github.com/ibrahimelseginy/ToDo/assets/160798019/ddc27eea-411a-4eda-9207-8835b17070ec.png " width="150" height="315">
 </div>
 
