@@ -16,7 +16,7 @@ class DefaultTextFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final String? hintText;
   final String? labelText;
-    final int maxlenght;
+  final int maxlenght;
   final int? maxlines;
   final bool isPassword;
 

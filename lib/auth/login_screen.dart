@@ -48,15 +48,25 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 16,
+                  const Spacer(
+                    flex: 5,
                   ),
                   Text(
-                    'Welcome back!',
-                    style: Theme.of(context).textTheme.titleMedium,
+                    S.of(context).welcomeBack,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(fontSize: 30),
                   ),
-                  const SizedBox(
-                    height: 16,
+                  Text(
+                    S.of(context).pleaseLogin,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium
+                        ?.copyWith(fontSize: 20),
+                  ),
+                  const Spacer(
+                    flex: 2,
                   ),
                   DefaultTextFormField(
                     validator: (value) {
@@ -67,7 +77,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                       return null;
                     },
-                    labelText: 'Email',
+                    maxlines: 1,
+                    maxlenght: 100,
+                    labelText: S.of(context).email,
                     controller: emailController,
                   ),
                   DefaultTextFormField(
@@ -81,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                       return null;
                     },
-                    labelText: 'Password',
+                    labelText: S.of(context).password,
                     controller: passowrdController,
                     isPassword: true,
                   ),
@@ -97,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       S.of(context).forgotPassword,
                       style: Theme.of(context)
                           .textTheme
-                          .bodySmall
+                          .bodySmall  
                           ?.copyWith(fontWeight: FontWeight.w900),
                     ),
                   ),

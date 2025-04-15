@@ -6,6 +6,7 @@ import 'package:todoapp/tabs/tasks/task_item.dart';
 import 'package:todoapp/tabs/tasks/tasks_provider.dart';
 
 class TaskTab extends StatefulWidget {
+  static const String routeName = '/tasks';
   const TaskTab({super.key});
 
   @override

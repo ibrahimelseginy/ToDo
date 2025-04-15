@@ -31,114 +31,113 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(
-          'register',
-          style: TextStyle(
-            color: AppTheme.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+        title: Center(
+          child: Text(S.of(context).createAccount),
         ),
-        centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
-      body: Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/background.png'),
-                fit: BoxFit.fill),
-          ),
-          child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Form(
-                key: formkey,
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      DefaultTextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'First name can\'t be empty';
-                          } else if (value.length < 4) {
-                            return 'Minimum 6 characters';
-                          }
-                          return null;
-                        },
-                        labelText: 'First name',
-                        controller: nameController,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      DefaultTextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Email Can\'t be empty';
-                          } else if (value.length < 6) {
-                            return 'Minimum 6 characters';
-                          }
-                          return null;
-                        },
-                        labelText: 'E-mail address',
-                        controller: emailController,
-                      ),
-                      DefaultTextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Password can\'t be empty';
-                          } else if (value.length < 6) {
-                            return 'Minimum 6 characters';
-                          } else if (value.contains('*&%!')) {
-                            return 'Password Should be contains Special characters';
-                          }
-                          return null;
-                        },
-                        labelText: 'Password',
-                        controller: passowrdController,
-                        isPassword: true,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      DefaultElevatedButton(
-                        onPressed: _register,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text(
-                              S.of(context).createAccount,
-                              style: Theme.of(context).textTheme.titleLarge,
-                            ),
-                            Icon(
-                              Icons.arrow_back,
-                              color: AppTheme.white,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Spacer(
-                        flex: 1,
-                      ),
-                      Center(
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(
-                                context, LoginScreen.routeName);
-                          },
-                          child: Text(
-                            S.of(context).alreadyHaveAnAccount,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodySmall
-                                ?.copyWith(fontWeight: FontWeight.w900),
+      body: Stack(fit: StackFit.expand, children: [
+        Image.asset(
+          'assets/images/background.png',
+          fit: BoxFit.fill,
+        ),
+        Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Form(
+              key: formkey,
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Spacer(
+                      flex: 15,
+                    ),
+                    DefaultTextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'First name can\'t be empty';
+                        } else if (value.length < 4) {
+                          return 'Minimum 6 characters';
+                        }
+                        return null;
+                      },
+                      labelText: S.of(context).firstName,
+                      controller: nameController,
+                    ),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    DefaultTextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Email Can\'t be empty';
+                        } else if (value.length < 6) {
+                          return 'Minimum 6 characters';
+                        }
+                        return null;
+                      },
+                      labelText: S.of(context).emailAddress,
+                      controller: emailController,
+                    ),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    DefaultTextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Password can\'t be empty';
+                        } else if (value.length < 6) {
+                          return 'Minimum 6 characters';
+                        } else if (value.contains('*&%!')) {
+                          return 'Password Should be contains Special characters';
+                        }
+                        return null;
+                      },
+                      labelText: S.of(context).password,
+                      controller: passowrdController,
+                      isPassword: true,
+                    ),
+                    const Spacer(
+                      flex: 2,
+                    ),
+                    DefaultElevatedButton(
+                      onPressed: _register,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            S.of(context).createAccount,
+                            style: Theme.of(context).textTheme.titleLarge,
                           ),
+                          Icon(
+                            Icons.arrow_back,
+                            color: AppTheme.white,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const Spacer(
+                      flex: 1,
+                    ),
+                    Center(
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, LoginScreen.routeName);
+                        },
+                        child: Text(
+                          S.of(context).alreadyHaveAnAccount,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(fontWeight: FontWeight.w900),
                         ),
                       ),
-                      const Spacer(flex: 3),
-                    ]),
-              ))),
+                    ),
+                    const Spacer(flex: 3),
+                  ]),
+            ))
+      ]),
     );
   }
 

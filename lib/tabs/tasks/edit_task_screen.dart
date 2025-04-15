@@ -1,118 +1,119 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 import 'package:todoapp/app_theme.dart';
-
+import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/firebase_utils.dart';
+import 'package:todoapp/generated/l10n.dart';
 import 'package:todoapp/model/task_model.dart';
+import 'package:todoapp/tabs/tasks/default_elevated_button.dart';
+import 'package:todoapp/tabs/tasks/task_tab.dart';
 
+// ignore: must_be_immutable
 class EditTaskScreen extends StatefulWidget {
-  static const String routeName = 'editTaskScreen';
-
   const EditTaskScreen({super.key});
+  static const String routeName = '/edit-task-screen';
 
   @override
   State<EditTaskScreen> createState() => _EditTaskScreenState();
 }
 
 class _EditTaskScreenState extends State<EditTaskScreen> {
-  late TaskModel task;
-
-  TextEditingController titleController = TextEditingController();
-
-  var selectedDate = DateTime.now();
-
-  TextEditingController desController = TextEditingController();
-
+  var selecetdDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
-    final dateformate = DateFormat('dd/MM/yyyy');
     var arg = ModalRoute.of(context)!.settings.arguments as TaskModel;
+    final userId =
+        Provider.of<UserProvider>(context, listen: false).currentUser!.id;
+
+    TextTheme textTheme = Theme.of(context).textTheme;
+    final dateFormat = DateFormat('dd/MM/yyyy');
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Edit Task',
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppTheme.black,
-              ),
-        ),
+        title: Text(S.of(context).toDoList),
       ),
       body: Card(
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(25),
-        ),
-        margin: const EdgeInsets.all(25),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        margin: const EdgeInsets.all(20),
         child: Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const Spacer(),
+              const Spacer(
+                flex: 2,
+              ),
               Text(
-                'Edit Task',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                S.of(context).editTask,
+                style: TextStyle(
+                    color: AppTheme.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              const Spacer(
+                flex: 1,
+              ),
+              TextFormField(
+                  initialValue: arg.title,
+                  onChanged: (val) => arg.title = val,
+                  // controller: titleController..text = arg.title,
+                  decoration: const InputDecoration(hintText: 'This is title')),
+              const Spacer(
+                flex: 1,
+              ),
+              TextFormField(
+                  initialValue: arg.description,
+                  onChanged: (val) => arg.description = val,
+                  // controller: titleController..text = arg.description,
+                  decoration: const InputDecoration(hintText: 'Task details')),
+              const Spacer(
+                flex: 1,
+              ),
+              Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(
+                  S.of(context).selectTime,
+                  style: TextStyle(
                       color: AppTheme.black,
-                    ),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
-              const Spacer(),
-              TextField(
-                controller: titleController..text = task.title,
-                decoration: const InputDecoration(labelText: 'Title'),
-              ),
-              const Spacer(),
-              TextField(
-                controller: desController..text = task.description,
-                decoration: const InputDecoration(labelText: 'Details'),
-              ),
-              const Spacer(),
-              Text(
-                'Selected date',
-                style: Theme.of(context).textTheme.bodyLarge,
+              const Spacer(
+                flex: 1,
               ),
               InkWell(
                 onTap: () async {
-                  //dont reasign the same var (date not reasign)
                   final date = await showDatePicker(
-                      context: context,
-                      firstDate: DateTime.now(),
-                      lastDate: DateTime.now().add(const Duration(days: 356)),
-                      initialDate: selectedDate,
-                      initialEntryMode: DatePickerEntryMode.calendarOnly);
-                  //new var (date)
-                  if (date != null) selectedDate = date;
-                  setState(() {});
+                    context: context,
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime.now().add(const Duration(days: 365)),
+                    initialDate: selecetdDate,
+                    initialEntryMode: DatePickerEntryMode.calendarOnly,
+                  );
+                  if (date != null) {
+                    selecetdDate = date;
+                    setState(() {});
+                  }
                 },
                 child: Text(
-                  // DateTime.now().toString().substring(0, 10)
-                  dateformate.format(selectedDate),
-                  style: Theme.of(context).textTheme.bodySmall,
+                  dateFormat.format(selecetdDate),
+                  // DateTime.now().toString().substring(0, 10),
+                  style: textTheme.bodySmall,
                 ),
               ),
-              const Spacer(),
-              InkWell(
-                onTap: () {
-                  FirebaseUtils.editTask(task, task.id);
-                  Navigator.pop(context);
-                },
-                child: Container(
-                  width: double.infinity,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-                  decoration: BoxDecoration(
-                    color: AppTheme.primaryColor,
-                    borderRadius: BorderRadius.circular(
-                      20,
-                    ),
-                  ),
-                  child: Center(
+              const Spacer(
+                flex: 1,
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: DefaultElevatedButton(
                     child: Text(
-                      'Save Changes',
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: AppTheme.white,
-                      ),
+                      S.of(context).save,
                     ),
-                  ),
-                ),
+                    onPressed: () async {
+                      Navigator.of(context).pushNamed(TaskTab.routeName);
+                      await FirebaseUtils.editTask(arg, userId);
+                    }),
               ),
               const Spacer(
                 flex: 3,

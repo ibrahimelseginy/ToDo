@@ -11,6 +11,7 @@ import 'package:todoapp/generated/l10n.dart';
 import 'package:todoapp/home_screen.dart';
 import 'package:todoapp/tabs/settings/settings_provider.dart';
 import 'package:todoapp/tabs/tasks/edit_task_screen.dart';
+import 'package:todoapp/tabs/tasks/task_tab.dart';
 import 'package:todoapp/tabs/tasks/tasks_provider.dart';
 import 'firebase_options.dart';
 
@@ -59,6 +60,7 @@ class TodoApp extends StatelessWidget {
         LoginScreen.routeName: (context) => const LoginScreen(),
         RegisterScreen.routeName: (context) => const RegisterScreen(),
         ResetPasswordScreen.routeName: (context) => const ResetPasswordScreen(),
+        TaskTab.routeName: (context) => const TaskTab(),
       },
       initialRoute: LoginScreen.routeName,
     );
