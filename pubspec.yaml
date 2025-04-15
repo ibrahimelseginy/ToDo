@@ -1,6 +1,6 @@
 name: todoapp
 description: "A new Flutter project."
-publish_to: 'none' 
+publish_to: 'none'
 version: 1.0.0+1
 
 environment:
@@ -14,14 +14,14 @@ dependencies:
   flutter_timeline_calendar: ^1.0.9
   firebase_core: ^2.12.0
   cloud_firestore: ^4.7.0
-  google_fonts: ^4.0.4  
-  flutter_localizations:  
+  google_fonts: ^4.0.4
+  flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
   fluttertoast: ^8.2.4
   flutter_slidable: ^3.0.1
   firebase_auth: ^4.17.9
-
+  page_transition: ^2.0.10
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -31,7 +31,8 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
- 
 
   assets:
     - assets/images/
+flutter_intl:
+  enabled: true

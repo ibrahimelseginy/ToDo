@@ -27,7 +27,7 @@ class _TaskTabState extends State<TaskTab> {
   @override
   Widget build(BuildContext context) {
     if (shouldGetTasks) {
-      //هيتفزو مره واحده بس
+      //هيتنفزو مره واحده بس
       userId = Provider.of<UserProvider>(context).currentUser!.id;
       tasksProvider = Provider.of<TasksProvider>(context)..getTasks(userId);
       shouldGetTasks = false;

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/app_theme.dart';
 import 'package:todoapp/auth/login_screen.dart';
 import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/firebase_utils.dart';
+import 'package:todoapp/generated/l10n.dart';
 import 'package:todoapp/tabs/tasks/add_task_bottom_sheet.dart';
 import 'package:todoapp/tabs/tasks/task_tab.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:todoapp/tabs/tasks/tasks_provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -23,10 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> appBarTitles = [
-      AppLocalizations.of(context)!.toDoList,
-      AppLocalizations.of(context)!.settings
-    ];
+    List<String> appBarTitles = [S.of(context).todo, S.of(context).settings];
     return Scaffold(
       appBar: AppBar(
         title: Padding(
@@ -44,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             icon: Icon(
               Icons.logout_outlined,
-              color: AppTheme.whiteColor,
+              color: AppTheme.white,
               size: 30,
             ),
           )

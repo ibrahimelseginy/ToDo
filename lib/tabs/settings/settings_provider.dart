@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 
 class SettingsProvider with ChangeNotifier {
   ThemeMode themeMode = ThemeMode.light;
-  String languegeCode = 'en';
+  String languageCode = 'ar';
 
-  void changeTheme(ThemeMode selectedThemeMode) {
-    themeMode = selectedThemeMode;
+  String get backgroundImageName =>
+      themeMode == ThemeMode.light ? 'default_bg' : 'dark_bg';
+
+  void changeTheme(ThemeMode selectedTheme) {
+    if (selectedTheme == themeMode) return;
+    themeMode = selectedTheme;
     notifyListeners();
   }
 
-  chaneLanguage(String selectedLanguage) {
-    languegeCode = selectedLanguage;
+  void changeLanguageCode(String selectedLanaguage) {
+    if (selectedLanaguage == languageCode) return;
+    languageCode = selectedLanaguage;
     notifyListeners();
   }
 }

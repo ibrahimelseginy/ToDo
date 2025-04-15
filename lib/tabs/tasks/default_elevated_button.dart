@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/app_theme.dart';
 
 // ignore: must_be_immutable
 class DefaultElevatedButton extends StatelessWidget {
   Widget child;
-  VoidCallback onpressed;
-
-  DefaultElevatedButton(
-      {super.key, required this.child, required this.onpressed});
-
+  VoidCallback onPressed;
+  DefaultElevatedButton({
+    super.key,
+    required this.child,
+    required this.onPressed,
+  });
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return ElevatedButton(
-        onPressed: onpressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppTheme.primaryColor,
-          fixedSize: Size(
-            MediaQuery.of(context).size.width,
-            50,
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(6),
-          ),
-        ),
+            backgroundColor: AppTheme.primaryColor,
+            fixedSize: Size(
+              width,
+              50,
+            ),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10))),
+        onPressed: onPressed,
         child: child);
   }
 }

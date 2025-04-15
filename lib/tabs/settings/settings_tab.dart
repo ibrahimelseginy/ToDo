@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/app_theme.dart';
 import 'package:todoapp/tabs/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +44,7 @@ class _SettingsTabState extends State<SettingsTab> {
                 },
                 activeTrackColor: Theme.of(context).primaryColor,
                 inactiveTrackColor: Theme.of(context).primaryColor,
-                thumbColor: MaterialStatePropertyAll(AppTheme.whiteColor),
+                thumbColor: MaterialStatePropertyAll(AppTheme.white),
               ),
             ],
           ),
@@ -63,7 +63,7 @@ class _SettingsTabState extends State<SettingsTab> {
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<Language>(
                     value: languages.firstWhere(
-                      (lang) => lang.code == settingsProvider.languegeCode,
+                      (lang) => lang.code == settingsProvider.languageCode,
                     ),
                     items: languages
                         .map(
@@ -81,7 +81,8 @@ class _SettingsTabState extends State<SettingsTab> {
                         .toList(),
                     onChanged: (selectedLanguage) {
                       if (selectedLanguage != null) {
-                        settingsProvider.chaneLanguage(selectedLanguage.code);
+                        settingsProvider
+                            .changeLanguageCode(selectedLanguage.code);
                       }
                     },
                     borderRadius: BorderRadius.circular(25),

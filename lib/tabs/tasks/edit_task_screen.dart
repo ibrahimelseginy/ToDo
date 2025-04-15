@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/app_theme.dart';
+
 import 'package:todoapp/firebase_utils.dart';
 import 'package:todoapp/model/task_model.dart';
 
@@ -31,7 +32,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
         title: Text(
           'Edit Task',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: AppTheme.balckColor,
+                color: AppTheme.black,
               ),
         ),
       ),
@@ -49,7 +50,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
               Text(
                 'Edit Task',
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppTheme.balckColor,
+                      color: AppTheme.black,
                     ),
               ),
               const Spacer(),
@@ -107,7 +108,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                       'Save Changes',
                       style: TextStyle(
                         fontSize: 17,
-                        color: AppTheme.whiteColor,
+                        color: AppTheme.white,
                       ),
                     ),
                   ),

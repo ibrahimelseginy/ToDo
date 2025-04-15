@@ -2,10 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/app_theme.dart';
 import 'package:todoapp/auth/register_screen.dart';
+import 'package:todoapp/auth/reset_password_screen.dart';
 import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/firebase_utils.dart';
+import 'package:todoapp/generated/l10n.dart';
 import 'package:todoapp/home_screen.dart';
 import 'package:todoapp/tabs/tasks/default_elevated_button.dart';
 import 'package:todoapp/tabs/tasks/default_text_form_field.dart';
@@ -25,136 +27,164 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text(
-          'Login',
-          style: TextStyle(
-            color: AppTheme.whiteColor,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+        title: Center(
+          child: Text(S.of(context).login),
         ),
-        centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/background.png'),
-              fit: BoxFit.fill),
+      body: Stack(fit: StackFit.expand, children: [
+        Image.asset(
+          'assets/images/background.png',
+          fit: BoxFit.fill,
         ),
-        child: Padding(
+        Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Form(
             key: formkey,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 16,
-                ),
-                Text(
-                  'Welcome back!',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                DefaultTextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Can\'t be empty';
-                    } else if (value.length < 6) {
-                      return 'Minimum 6 characters';
-                    }
-                    return null;
-                  },
-                  labelText: 'Email',
-                  controller: emailController,
-                ),
-                DefaultTextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Can\'t be empty';
-                    } else if (value.length < 6) {
-                      return 'Minimum 6 characters';
-                    } else if (value.contains('*&%!')) {
-                      return 'Should be contains Special characters';
-                    }
-                    return null;
-                  },
-                  labelText: 'Password',
-                  controller: passowrdController,
-                  isPassword: true,
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                DefaultElevatedButton(
-                  onpressed: login,
-                  child: Row(
-                    children: [
-                      const Spacer(),
-                      Text(
-                        'Login',
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            fontSize: 19, color: AppTheme.whiteColor),
-                      ),
-                      const Spacer(
-                        flex: 8,
-                      ),
-                      Icon(
-                        Icons.arrow_back,
-                        color: AppTheme.whiteColor,
-                      ),
-                      const Spacer(),
-                      TextButton(
-                        onPressed: () => Navigator.of(context)
-                            .pushReplacementNamed(RegisterScreen.routeName),
-                        child: const Text(
-                          'or Create My Account',
-                        ),
-                      ),
-                    ],
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 16,
                   ),
-                ),
-              ],
-            ),
+                  Text(
+                    'Welcome back!',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  DefaultTextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Can\'t be empty';
+                      } else if (value.length < 6) {
+                        return 'Minimum 6 characters';
+                      }
+                      return null;
+                    },
+                    labelText: 'Email',
+                    controller: emailController,
+                  ),
+                  DefaultTextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Can\'t be empty';
+                      } else if (value.length < 6) {
+                        return 'Minimum 6 characters';
+                      } else if (value.contains('*&%!')) {
+                        return 'Should be contains Special characters';
+                      }
+                      return null;
+                    },
+                    labelText: 'Password',
+                    controller: passowrdController,
+                    isPassword: true,
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, ResetPasswordScreen.routeName);
+                    },
+                    child: Text(
+                      S.of(context).forgotPassword,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodySmall
+                          ?.copyWith(fontWeight: FontWeight.w900),
+                    ),
+                  ),
+                  const Spacer(
+                    flex: 1,
+                  ),
+                  DefaultElevatedButton(
+                      onPressed: _login,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            S.of(context).login,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          Icon(
+                            Icons.arrow_back,
+                            color: AppTheme.white,
+                          ),
+                        ],
+                      )),
+                  const Spacer(
+                    flex: 1,
+                  ),
+                  Center(
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, RegisterScreen.routeName);
+                      },
+                      child: Text(
+                        S.of(context).dontHaveAnAccount,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall
+                            ?.copyWith(fontWeight: FontWeight.w900),
+                      ),
+                    ),
+                  ),
+                  const Spacer(
+                    flex: 1,
+                  ),
+                  DefaultElevatedButton(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          S.of(context).continueAsGuest,
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    fontSize: 17,
+                                  ),
+                        ),
+                      ],
+                    ),
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                          context, HomeScreen.routeName);
+                    },
+                  ),
+                  const Spacer(
+                    flex: 2,
+                  )
+                ]),
           ),
-        ),
-      ),
+        )
+      ]),
     );
   }
 
-  void login() {
-    if (formkey.currentState?.validate() == true) {
+  void _login() {
+    if (formkey.currentState!.validate() == true) {
       FirebaseUtils.login(
         email: emailController.text,
         password: passowrdController.text,
-      )
-          .then((user) => {
-                Provider.of<UserProvider>(context, listen: false)
-                    .updateUser(user),
-                Navigator.of(context).pushReplacementNamed(HomeScreen.routeName)
-              })
-          .catchError(
-        (error) {
-          if (error is FirebaseAuthException && error.message != null) {
-            Fluttertoast.showToast(
-              msg: error.message!,
-              toastLength: Toast.LENGTH_SHORT,
-            );
-          } else {
-            Fluttertoast.showToast(
-              msg: 'Something Went wrong !',
-              toastLength: Toast.LENGTH_SHORT,
-            );
-          }
-        },
-      );
+      ).then((user) {
+        Provider.of<UserProvider>(context, listen: false).updateUser(user);
+        Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+      }).catchError((onError) {
+        if (onError is FirebaseAuthException && onError.message != null) {
+          Fluttertoast.showToast(
+              msg: onError.message!, toastLength: Toast.LENGTH_SHORT);
+        } else {
+          Fluttertoast.showToast(
+              msg: 'Something went wrong!', toastLength: Toast.LENGTH_SHORT);
+        }
+      });
     }
   }
 }

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:todoapp/apptheme.dart';
 import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/firebase_utils.dart';
 import 'package:todoapp/model/task_model.dart';
 import 'package:todoapp/tabs/tasks/default_elevated_button.dart';
 import 'package:todoapp/tabs/tasks/default_text_form_field.dart';
 import 'package:todoapp/tabs/tasks/tasks_provider.dart';
+import 'package:todoapp/app_theme.dart';
 
 class AddTaskButtomSheet extends StatefulWidget {
   const AddTaskButtomSheet({super.key});
@@ -38,7 +38,7 @@ class _AddTaskButtomSheetState extends State<AddTaskButtomSheet> {
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium
-                    ?.copyWith(color: AppTheme.balckColor),
+                    ?.copyWith(color: AppTheme.black),
               ),
               DefaultTextFormField(
                 validator: (value) {
@@ -95,13 +95,13 @@ class _AddTaskButtomSheetState extends State<AddTaskButtomSheet> {
                 ),
               ),
               DefaultElevatedButton(
-                onpressed: addtask,
+                onPressed: addtask,
                 child: Text(
                   'Add',
                   style: Theme.of(context)
                       .textTheme
                       .bodyMedium
-                      ?.copyWith(color: AppTheme.whiteColor),
+                      ?.copyWith(color: AppTheme.white),
                 ),
               )
             ],

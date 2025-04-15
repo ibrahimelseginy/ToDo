@@ -8,6 +8,7 @@ class DefaultTextFormField extends StatefulWidget {
       this.labelText,
       this.isPassword = false,
       this.maxlines = 1,
+      this.maxlenght = 40,
       required this.controller,
       this.validator});
 
@@ -15,6 +16,7 @@ class DefaultTextFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final String? hintText;
   final String? labelText;
+    final int maxlenght;
   final int? maxlines;
   final bool isPassword;
 

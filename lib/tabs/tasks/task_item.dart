@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-import 'package:todoapp/apptheme.dart';
+import 'package:todoapp/app_theme.dart';
+
 import 'package:todoapp/auth/user_provider.dart';
 import 'package:todoapp/firebase_utils.dart';
 import 'package:todoapp/model/task_model.dart';
@@ -54,8 +55,8 @@ class _TaskItemState extends State<TaskItem> {
                       ),
                     );
               },
-              backgroundColor: AppTheme.redColor,
-              foregroundColor: AppTheme.whiteColor,
+              backgroundColor: AppTheme.red,
+              foregroundColor: AppTheme.white,
               icon: Icons.delete,
               label: 'Delete',
               borderRadius: BorderRadius.circular(15),
@@ -65,7 +66,7 @@ class _TaskItemState extends State<TaskItem> {
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: AppTheme.whiteColor,
+            color: AppTheme.white,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Row(
@@ -87,8 +88,8 @@ class _TaskItemState extends State<TaskItem> {
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: widget.task.isDone == true
-                              ? AppTheme.greenColor
-                              : AppTheme.balckColor,
+                              ? AppTheme.green
+                              : AppTheme.black,
                         ),
                   ),
                   const SizedBox(
@@ -117,13 +118,13 @@ class _TaskItemState extends State<TaskItem> {
                             vertical: 2, horizontal: 12),
                         decoration: BoxDecoration(
                           color: widget.task.isDone
-                              ? AppTheme.greenColor
+                              ? AppTheme.green
                               : AppTheme.primaryColor,
                           borderRadius: BorderRadius.circular(13),
                         ),
                         child: Icon(
                           Icons.done,
-                          color: AppTheme.whiteColor,
+                          color: AppTheme.white,
                           size: 30,
                         ),
                       ),
